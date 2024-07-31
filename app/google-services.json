@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "79162765743",
+    "project_id": "limitless-c896c",
+    "storage_bucket": "limitless-c896c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:79162765743:android:a1c2b5afdfa8a488d6ff5a",
+        "android_client_info": {
+          "package_name": "com.example.limitless"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBK3bvTngj9FwhRCmZGuC-YtMKjHdtwPE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
