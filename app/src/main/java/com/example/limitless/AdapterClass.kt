@@ -19,7 +19,9 @@ class AdapterClass(private val dataList: ArrayList<DataClass>): RecyclerView.Ada
     override fun onBindViewHolder(holder: ViewHolderClass, position: Int) {
         val currentItem = dataList[position]
         holder.rvImage.setImageResource(currentItem.dataImage)
-        holder.rvTitle.text = currentItem.dataTitle
+        holder.rvDescription.text = currentItem.dataDescription
+        holder.rvBrand.text = currentItem.dataBrand
+        holder.rvDate.text = currentItem.dataDate
 
         holder.itemView.setOnClickListener{
             onItemClick?.invoke(currentItem)
@@ -32,6 +34,8 @@ class AdapterClass(private val dataList: ArrayList<DataClass>): RecyclerView.Ada
 
     class ViewHolderClass(itemView: View): RecyclerView.ViewHolder(itemView) {
         val rvImage:ImageView = itemView.findViewById(R.id.image)
-        val rvTitle:TextView = itemView.findViewById(R.id.title)
+        val rvDescription:TextView = itemView.findViewById(R.id.description)
+        val rvBrand:TextView = itemView.findViewById(R.id.brand)
+        val rvDate:TextView = itemView.findViewById(R.id.date)
     }
 }
