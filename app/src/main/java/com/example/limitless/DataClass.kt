@@ -3,9 +3,9 @@ package com.example.limitless
 import android.os.Parcel
 import android.os.Parcelable
 
-data class DataClass(var dataImage:Int, var dataDescription:String, var dataBrand:String, var dataDate:String,): Parcelable {
+data class DataClass(var dataImage:String, var dataDescription:String, var dataBrand:String, var dataDate:String,): Parcelable {
     constructor(parcel: Parcel) : this(
-        parcel.readInt(),
+        parcel.readString()!!,
         parcel.readString()!!,
         parcel.readString()!!,
         parcel.readString()!!,
@@ -13,7 +13,7 @@ data class DataClass(var dataImage:Int, var dataDescription:String, var dataBran
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeInt(dataImage)
+        parcel.writeString(dataImage)
         parcel.writeString(dataDescription)
     }
 

@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.limitless.databinding.ActivityMainBinding
 import com.firebase.ui.auth.AuthUI
 import com.google.firebase.Timestamp
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.toObject
 import java.text.SimpleDateFormat
@@ -43,14 +44,16 @@ class MainActivity : AppCompatActivity() {
         recyclerView.adapter = itemAdapter
 
         db = FirebaseFirestore.getInstance()
-        db.collection("items")
+        val auth = FirebaseAuth.getInstance()
+        val userId = auth.currentUser?.uid ?: return
+        db.collection("users").document(userId).collection("items")
             .get()
             .addOnSuccessListener { documents ->
                 val dateFormat = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
 
                 for (document in documents) {
                     itemList.add(DataClass(
-                        0,
+                        document.getString("photo") ?: "",
                         document.getString("description") ?: "",
                         document.getString("brand") ?: "",
                         dateFormat.format(document.getTimestamp("date")!!.toDate())

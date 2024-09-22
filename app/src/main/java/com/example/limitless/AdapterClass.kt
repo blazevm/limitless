@@ -6,6 +6,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+
 
 class AdapterClass(private val dataList: ArrayList<DataClass>): RecyclerView.Adapter<AdapterClass.ViewHolderClass>() {
 
@@ -18,10 +20,12 @@ class AdapterClass(private val dataList: ArrayList<DataClass>): RecyclerView.Ada
 
     override fun onBindViewHolder(holder: ViewHolderClass, position: Int) {
         val currentItem = dataList[position]
-        holder.rvImage.setImageResource(currentItem.dataImage)
         holder.rvDescription.text = currentItem.dataDescription
         holder.rvBrand.text = currentItem.dataBrand
         holder.rvDate.text = currentItem.dataDate
+        Glide.with(holder.itemView.context)
+            .load(currentItem.dataImage)
+            .into(holder.rvImage)
 
         holder.itemView.setOnClickListener{
             onItemClick?.invoke(currentItem)
