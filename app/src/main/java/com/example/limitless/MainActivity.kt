@@ -2,16 +2,17 @@ package com.example.limitless
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.limitless.databinding.ActivityMainBinding
 import com.firebase.ui.auth.AuthUI
-import com.google.firebase.Timestamp
+//import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ktx.toObject
+//import com.google.firebase.firestore.ktx.toObject
 import java.text.SimpleDateFormat
 import java.util.Locale
 
@@ -32,11 +33,6 @@ class MainActivity : AppCompatActivity() {
         itemList = arrayListOf()
 
         itemAdapter = AdapterClass(itemList)
-//        itemAdapter.onItemClick = {
-//            val intent = Intent(this, DetailActivity::class.java)
-//            intent.putExtra("android", it)
-//            startActivity(intent)
-//        }
 
         recyclerView = findViewById(R.id.recyclerView)
         recyclerView.setHasFixedSize(true)
@@ -65,6 +61,14 @@ class MainActivity : AppCompatActivity() {
             .addOnFailureListener { exception ->
                 // Handle any errors here
             }
+
+        val buttonToAddData = findViewById<Button>(R.id.buttonToAddData)
+
+        // Step 3: Set up a click listener to navigate to AddDataActivity
+        buttonToAddData.setOnClickListener {
+            val intent = Intent(this, AddDataActivity::class.java)
+            startActivity(intent)  // This starts the AddDataActivity
+        }
 
         binding.logoutButton.setOnClickListener {
             AuthUI.getInstance()

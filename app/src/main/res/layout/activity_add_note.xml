@@ -9,30 +9,50 @@
     tools:context=".MainActivity">
 
     <EditText
-        android:id="@+id/edit_text_description"
+        android:id="@+id/editTextDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Description"
+        android:hint="Enter Description"
         android:inputType="text" />
 
     <EditText
-        android:id="@+id/edit_text_band"
+        android:id="@+id/editTextBrand"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Brand"
+        android:hint="Enter Brand"
         android:inputType="text" />
 
     <EditText
-        android:id="@+id/edit_text_date"
+        android:id="@+id/editTextDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Date purchased"
-        android:inputType="text" />
+        android:focusable="false"
+        android:clickable="true"
+        android:inputType="none" />
 
+    <ImageView
+        android:id="@+id/imagePreview"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:contentDescription="Image Preview"
+        android:background="#DDDDDD"
+        android:scaleType="centerCrop" />
+
+    <!-- Upload Image Button -->
     <Button
-        android:layout_width="match_parent"
+        android:id="@+id/buttonUploadImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select Image" />
+
+    <!-- Submit Button -->
+    <Button
+        android:id="@+id/buttonSubmit"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="saveNote"
-        android:text="Save" />
+        android:text="Submit" />
 
 </LinearLayout>
