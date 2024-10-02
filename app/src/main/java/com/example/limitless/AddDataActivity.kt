@@ -67,7 +67,7 @@ class AddDataActivity : AppCompatActivity() {
         }
     }
 
-    // Step 2: Function to show a DatePickerDialog
+    // Function to show a DatePickerDialog
     private fun showDatePickerDialog() {
         val datePickerDialog = DatePickerDialog(
             this,
@@ -123,7 +123,7 @@ class AddDataActivity : AppCompatActivity() {
                         val data = hashMapOf(
                             "description" to description,
                             "brand" to brand,
-                            "date" to date, // Use Firestore timestamp or your selected date
+                            "date" to date,
                             "imageUrl" to imageUrl.toString(),
                             "userId" to userId
                         )
@@ -134,6 +134,12 @@ class AddDataActivity : AppCompatActivity() {
                             .add(data)
                             .addOnSuccessListener {
                                 Toast.makeText(this, "Data added successfully", Toast.LENGTH_SHORT).show()
+
+                                // Navigate back to MainActivity after success
+                                val intent = Intent(this, MainActivity::class.java)
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+                                startActivity(intent)
+                                finish()
                             }
                             .addOnFailureListener { e ->
                                 Toast.makeText(this, "Failed to add data: ${e.message}", Toast.LENGTH_SHORT).show()
@@ -147,4 +153,5 @@ class AddDataActivity : AppCompatActivity() {
             Toast.makeText(this, "Please select an image", Toast.LENGTH_SHORT).show()
         }
     }
+
 }

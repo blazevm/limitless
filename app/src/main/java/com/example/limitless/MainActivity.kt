@@ -2,13 +2,13 @@ package com.example.limitless
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.limitless.databinding.ActivityMainBinding
 import com.firebase.ui.auth.AuthUI
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import java.text.SimpleDateFormat
@@ -68,7 +68,7 @@ class MainActivity : AppCompatActivity() {
             }
 
         // Button to navigate to AddDataActivity
-        val buttonToAddData = findViewById<Button>(R.id.buttonToAddData)
+        val buttonToAddData = findViewById<FloatingActionButton>(R.id.buttonToAddData)
         buttonToAddData.setOnClickListener {
             val intent = Intent(this, AddDataActivity::class.java)
             startActivity(intent)  // Navigate to AddDataActivity
